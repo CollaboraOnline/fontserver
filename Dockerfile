@@ -10,9 +10,10 @@
 FROM python:3.9-slim
 
 # Install dependencies
+COPY requirements.txt .
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip python3-dev build-essential curl && \
-    pip install Flask && \
+    pip install -r requirements.txt && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set up working directory
